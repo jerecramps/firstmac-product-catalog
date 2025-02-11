@@ -1,0 +1,7 @@
+{
+  "name": "firstmac-product-catalog",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

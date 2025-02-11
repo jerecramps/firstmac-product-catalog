@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HomeConstants } from './constants/home.constant';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +8,6 @@ import { Component } from '@angular/core';
   standalone: false,
 })
 export class AppComponent {
+  HomeConstants = HomeConstants;
   constructor() {}
 }

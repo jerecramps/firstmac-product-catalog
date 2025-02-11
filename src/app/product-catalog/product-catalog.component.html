@@ -1,0 +1,31 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-searchbar [(ngModel)]="searchQuery" [debounce]="1000" (ionInput)="handleInput($event)" [placeholder]="ProductCatalogConstants.searchProduct"></ion-searchbar>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-select [interfaceOptions]="customModalOptions" interface="modal" justify="end" [placeholder]="ProductCatalogConstants.sortPriceBy" (ionChange)="onChange($event)">
+            <ion-select-option value="asc">{{ ProductCatalogConstants.lowestToHighest }}</ion-select-option>
+            <ion-select-option value="desc">{{ ProductCatalogConstants.highestToLowest }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let product of productDataService.filteredProductList$ | async">
+      <ion-col size="12" [routerLink]="'/details'" [state]="{ products: product }">
+        <app-generic-card-catalog
+          [cardName]="product.name"
+          [cardDiscount]="product.discount"
+          [cardPrice]="product.price"
+          [cardDescription]="product.description">
+        </app-generic-card-catalog>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
